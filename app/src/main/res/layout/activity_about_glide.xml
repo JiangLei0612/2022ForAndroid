@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 Glide整体流程？(https://www.jianshu.com/nb/34330595)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 Glide的with实现:通过调用getRetriever(activity).get(activity)返回RequestManager"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide001"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="2 ①getRetriever返回的是RequestManagerRetriever，它先获取Glide的单例,再使用Glide单例中的getRequestManagerRetriever返回RequestManagerRetriever
+                \n②RequestManagerRetriever有几个get，参数分别有context、fragment、activity、view，其思想主要是根据不同的生命周期对象创建一个RequestManagerFragment，根据这个RequestManagerFragment实现自动感知各大组件的生命周期实现。接着创建RequestManager并绑定RequestManagerFragment，RequestManager主要用来管理和发起一个Glide加载图片的请求，因为绑定了RequestManagerFragment所以可以感知各大组件的生命周期，并根据生命周期对Glide加载图片进行restart、或者stop等操作。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide002"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide003"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="3 load方法先通过asDrawable方法创建一个RequestBuilder，在调用RequestBuilder的load。as系列操作主要是用于标识将图片解析成Bitmap还是Drawable。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide004"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide005"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide006"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="3 RequestManager的load方法先创建一个RequestBuilder，再调用RequestBuilder的系列方法设置一些配置信息想transform、apply、error、into等，接着RequestBuilder再构建Glide图片加载对象Request，通过Request对象实现图片加载的请求。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide007"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide008"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="RequestBuilder的transition方法"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide009"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="RequestBuilder的apply方法"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide010"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="RequestBuilder的error方法"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide011"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="RequestBuilder的into方法"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide012"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide013"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide014"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide015"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="4 SingleRequest的begin()"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide016"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide017"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide018"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/glide019"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/event01"
+                android:adjustViewBounds="true"
+                android:visibility="gone"
+                >
+
+            </ImageView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="5 Engine.load的实现"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="① 构建图片加载对应的key
+                \n② 如果活跃资源列表中存在要加载的图片资源，则回调资源准备就绪
+                \n③ 如果缓存列表中存在要加载的图片资源，则回调资源准备就绪
+                \n④ 如果存在要加载图片对于的图片加载任务，则添加回调给图片加载任务，等待任务加载图片完成调度
+                \n⑤ 构建图片加载任务和图片解析任务对象
+                \n⑥ 通过图片加载任务加载任务"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="6 EngineJob的start()"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="① 先从磁盘缓存中读取，接着是从网络读取。上面的代码使用GlideExecutor 线程池调度decodeJob线程，使用decodeJob实现从磁盘、数据源、网络中加载图片。
+                \n② RESOURCE_CACHE: 从磁盘缓存中读取转换之后的图片，而这里的图片指的是原始图片转换之后的图片，比如从网络下载下来之后，先缓存到磁盘的就是原始的图片，经过对原始图片进行大小、方向等转换之后的图片就是转换之后的图片。
+                \n③ DATA_CACHE： 从磁盘缓存中读取原始图片，而这个磁盘缓存存的就是原始图片
+                \n④ SOURCE: 代表从网络上加载的状态"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="6 ResourceCacheGenerator、DataCacheGenerator和SourceGenerator"
+                >
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="① "
+                >
+            </TextView>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 Glide这样的框架设计有什么巧妙之处"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 使用方便：使用了链式、响应式的思想，给使用者带来了使用上的便捷
+                \n2 封装安全性：动态生成GlideApp间接访问Glide
+                \n3 模块、职责划分清晰：使用了各种设计模式（单例、工厂、观察者、构建、适配器、状态等）使模块和相应的职责划分比较清晰、耦合度也比较低
+                \n4 扩展性强：Glide的扩展性设计的还是很强的，这也是Glide的一个突出的特点，它提供很多可扩展的功能给开发者，比如：自定义图片加载器、自定义图片解析处理、设置缓存大小、设置缓存路径等等"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 Glide有哪些亮点，为什么很多人喜欢用？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 使用方便
+                \n2 扩展性强
+                \n3 四级缓存策略，提供效率和内存利用率
+                \n4 自动感应生命周期
+                \n5 高性能：运用了各种缓存、复用策略(LruCache、Pool等)，减少对象的频繁回收和创建，避免内存抖动、对象频繁回收导致频繁GC引起的卡顿"
+                >
+            </TextView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

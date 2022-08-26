@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="返回"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:background="@color/teal_200"
+        android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 RecyclerView的多级缓存机制,每一级缓存具体作用是什么,分别在什么场景下会用到哪些缓存？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 RecyclerView 缓存机制
+                \n(1) mAttachedScrap
+                \n第一级缓存，相当于 ListView 的 mActiveView，快速重用屏幕上可见的 ViewHolder。
+                \n(2) mCacheViews
+                \n第二级缓存，如果仍依赖于 RecyclerView(比如已经滑出可视范围，但还没有被移除掉)，但已经被标记移除的 ItemView 集合被添加到 mAttachedScrap 中。然后如果 mAttachedScrap 中不再依赖时会被加入到 mCachedViews 中，默认缓存 2 个 ItemView，RecycleView 从这里获取的缓存时，如果数据源不变的情况下，无需重新 bindView。
+                \n(3) mViewCacheExtension
+                \n第三级缓存，其是一个抽象静态类，用于充当附加的缓存池，当 RecyclerView 从 mCacheViews 找不到需要的 View 时，将会从 ViewCacheExtension 中寻找。不过这个缓存是由开发者维护的，如果没有设置它，则不会启用。通常我们也不会设置它，除非有特殊需求，比如要在调用系统的缓存池之前，返回一个特定的视图，才会用到它。
+                \n(4) RecycledViewPool
+                \n它是一个缓存池，实现上，是通过一个默认为 5 大小的 ArrayList 实现的。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 RecyclerView性能优化"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="(1) 数据处理和视频加载分离
+                \n(2)分页拉取数据时，对拉取下来的远端数据进行缓存，提升二次加载速度；对于新增或者删除数据通过 DiffUtil 来进行局部刷新数据，而不是一味地全局刷新数据。
+                \n(3)减少布局层级和过渡绘制,移除不必要的背景减少过度绘制。
+                \n(4)减少 xml 文件 inflate 时间
+                \n(5)减少 View 对象的创建
+                \n(6)使用 RecyclerView 的 prefetch 功能
+                \n(7)如果 Item 高度是固定的话，可以使用 RecyclerView.setHasFixedSize(true)，来避免 requestLayout 浪费资源。
+                \n(8)滑动过程冲停止数据加载或者图片加载工作。
+                \n(9)如果不需要动画，把默认动画关闭来提升效率，动画在 Android 系统中是一个很大的开销。
+                \n(10)通过 RecyclerView.setItemViewCacheSize(size)；来加大 RecyclerView 的缓存，用空间换时间来提高滚动的流畅性。
+                \n(11)如果多个 RecyclerView 的 Adapter 是一样的，比如嵌套的 RecyclerView 存在一样的 Adapter，可以通过设置 RecyclerView.setRecycledViewPool() 方法来共用一个 RecyledViewPool。
+                \n(12)通过 getExtraLayoutSpace() 方法来增加 RecyclerView 预留的额外空间(显示范围之外，应额外缓存空间)"
+                >
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 ListView与RecyclerView的区别 ? Recycler有什么优势 ?"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 区别:
+                \nListView中的Adapter中可以实现ViewHolder的复用。RecyclerView提供了一个耦合度更低的方式来复用ViewHolder，并且可以轻松的实现ListView、GridView以及瀑布流的效果。
+                \nRecycleView的优点:
+                \nRecycleView本身它是不关心视图相关的问题的，由于ListView的紧耦合的问题，google的改进就是RecyclerView本身不参与任何视图相关的问题。它不关心如何将子View放在合适的位置，也不关心如何分割这些子View，更不关心每个子View各自的外观。更进一步来说就是RecyclerView它只负责回收和重用的工作，这也是它名字的由来。
+                \nRecycleView的缺点:
+                \n(1) 在RecyclerView中，没有一个onItemClickListener方法。所以目前在适配器中处理这样的事件比较好。
+                \n(2) 如果想要从适配器上添加或移除条目，需要明确通知适配器。这与先前的notifyDataSetChanged()方法稍微有些不同。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/event01"
+                android:adjustViewBounds="true"
+                android:visibility="gone"
+                >
+
+            </ImageView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

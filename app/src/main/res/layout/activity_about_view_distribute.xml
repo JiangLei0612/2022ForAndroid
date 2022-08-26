@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="返回"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:background="@color/teal_200"
+        android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 View事件分发机制？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1   dispatchTouchEvent方法是负责决定是否向下分发事件，由上往下。onTouchEvent方法是对事件进行处理的方法，由下往上。onInterceptTouchEvent方法是ViewGroup类型控件独有的，它的作用是决定是不是拦截当前事件。
+            \ndispatchTouchEvent方法返回结果的情况：
+            \n(1) true：事件直接结束。
+            \n(2) false：如果是Activity的dispatchTouchEvent方法，事件结束，否则事件回到到父控件，这时父控件调用onTouchEvent方法处理事件。
+            \n(3) super：如果是Activity的dispatchTouchEvent方法，调用父类的dispatchTouchEvent方法之后，事件将会传递到子View的dispatchTouchEvent方法。如果是ViewGroup的dispatchTouchEvent方法，则会调用自身的onInterceptTouchEvent方法，以判断是不是需要对事件进行拦截。如果是View的dispatchTouchEvent方法，事件会交给自身的onTouchEvent方法来处理。
+            \nonTouchEvent方法返回：
+            \n(1) true/super：表示当前View处理这个事件，方法结束之后，事件也就结束了。
+            \n(2) false：事件将会被抛回父控件，然后父控件调用onTouchEvent方法来看是不是要处理事件。
+            \nonInterceptTouchEvent方法返回：
+            \n(1) true：表示当前控件要拦截事件，紧接着事件交给当前控件的onTouchEvent方法来处理。
+            \n(2) super/false：不拦截事件，事件最终继续往下分发。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/event01"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 onTouchEvent()，onTouchListener()，onClickListener()的执行顺序？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 View在执行dispatchTouchEvent的时候先要去判断该view是否有touchListener和执行TouchListener的onTouch方法的返回值。
+            \n2 TouchListener的onTouch方法返回false，事件继续传递在dispatch方法中调用了同级的onTouchEvent方法.
+            \n3 然后在onTouchEvent方法中的ACTION_UP事件中判断是否注册有onClickListener，有就执行onclick方法。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 事件是先到DecorView还是先到Window？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="事件的分发流程：ViewRootImpl——>DecorView——>Activity——>PhoneWindow——>DecorView——>ViewGroup"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/event02"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/event03"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q4 ACTION_CANCEL什么时候触发？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="当用户保持按下操作，并从你的控件转移到外层控件时，会触发ACTION_CANCEL。"
+                >
+            </TextView>
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/teal_200"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

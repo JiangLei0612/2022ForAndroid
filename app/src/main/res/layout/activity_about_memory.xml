@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="返回"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:background="@color/teal_200"
+        android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 什么是OOM?什么是内存泄漏以及原因?"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="一 OOM(Out of memory)
+                \n(1) 造成内存溢出的原因有很多种
+                \n 1.启动参数内存值设定的过小；
+                \n 2.内存中加载的数据量过于庞大，如一次从数据库取出过多数据；
+                \n 3.代码中存在死循环或循环产生过多重复的对象实体；
+                \n 4.集合类中有对对象的引用，使用完后未清空，使得JVM不能回收（内存泄漏）；
+                \n(2) 优化措施
+                \n 1.修改JVM启动参数，直接增加内存；(-Xms，-Xmx参数)
+                \n 2.避免一次性查询全部记录或者过多记录，最好采取分页的形式查询
+                \n 3.在编码过程中尽量避免写死循环或递归调用
+                \n 4.及时清空不使用的变量"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="二 内存泄漏
+                \n (1)什么是内存泄漏？
+                \n 内存泄漏也称作存储渗漏，用动态存储分配函数动态开辟的空间，在使用完毕后未释放，结果导致一直占据该内存单元，直到程序结束。简而言之，就是该内存空间使用完毕之后未回收
+                \n (2)产生内存泄露的原因有哪些？
+                \n 1.单例造成的内存泄漏:如果一个对象已经不再需要使用了，而单例对象还持有该对象的引用，就会使得该对象不能被正常回收，从而导致了内存泄漏。
+                \n 2.非静态内部类创建静态实例造成的内存泄漏
+                \n 3.Handler造成的内存泄漏:解决方法：将Handler类独立出来或者使用静态内部类，这样便可以避免内存泄漏。
+                \n 4.线程造成的内存泄漏:解决方法：将AsyncTask和Runnable类独立出来或者使用静态内部类，这样便可以避免内存泄漏。
+                \n 5.资源未关闭造成的内存泄漏:对于使用了BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源，应该在Activity销毁时及时关闭或者注销，否则这些资源将不会被回收，从而造成内存泄漏。资源型对象未关闭: Cursor,File"
+                >
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 Thread是如何造成内存泄露的，如何解决？?"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="一 泄漏原因
+                \n非静态内部类会持有外部类的引用。Thread 会长久地持有 Activity 的引用，使得系统无法回收 Activity 和它所关联的资源和视图。
+                \n二 解决办法
+                \n 1.把非静态内部类声明成静态内部类
+                \n 2.为thread添加一个结束的逻辑"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 Handler导致的内存泄露的原因以及如何解决?"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="一 泄漏原因:
+                \n 1.在Activity内将Handler声明成匿名内部类
+                \n 2.在Activity内将Handler声明成非静态内部类
+                \n二 解决办法
+                \n 1.静态内部类 + 弱引用
+                \n 2.如果将Handler声明成可能导致内存泄漏的情况，在Activity销毁时，可清空Handler中未执行或正在执行的Callback以及Message：
+                \n 3.非静态内部类 + 弱引用，在activity要回收时清除引用"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q4 如何加载Bitmap防止内存溢出?"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/bitmap_memory"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q5 MVP中如何处理Presenter层以防止内存泄漏的?"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="MVP 会出现内存泄漏是因为 Presenter 层持有 View对象，一般我们会把 Activity 做为 View 传递到Presenter，Presenter 持有 View对象，Activity 退出了但是没有回收出现内存泄漏。
+                \n 解决办法：
+                \n 1.Activity onDestroy() 方法中调用 Presenter 中的方法，把 View 置为 null
+                \n 2.使用 Lifecycle"
+                >
+            </TextView>
+
+
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/event01"
+                android:adjustViewBounds="true"
+                android:visibility="gone"
+                >
+
+            </ImageView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

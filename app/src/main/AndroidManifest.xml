@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.test.learn">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/xiugo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/xiugo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Learn">
+        <activity android:name=".KotlinActivity"></activity>
+        <activity android:name=".ScaleImageActivity" />
+        <activity android:name=".ActivityAboutDaggar2" />
+        <activity android:name=".ActivityAboutDesignModel" />
+        <activity android:name=".ActivityAboutAlgorithm" />
+        <activity android:name=".ActivityAboutKotlin" />
+        <activity android:name=".ActivityAboutThreadSafe" />
+        <activity android:name=".ActivityAboutRxjava" />
+        <activity android:name=".ActivityAboutEventBus" />
+        <activity android:name=".ActivityAboutLeakCanary" />
+        <activity android:name=".ActivityAboutRetrofit" />
+        <activity android:name=".ActivityAboutLruCache" />
+        <activity android:name=".ActivityAboutGlide" />
+        <activity android:name=".ActivityAboutOkHttp" />
+        <activity android:name=".ActivityAboutJetpack" />
+        <activity android:name=".ActivityAboutAOP" />
+        <activity android:name=".ActivityAboutHotFix" />
+        <activity android:name=".ActivityAboutStructure" />
+        <activity android:name=".ActivityAboutSerializable" />
+        <activity android:name=".ActivityAboutApk" />
+        <activity android:name=".ActivityAboutSystem" />
+        <activity android:name=".ActivityAboutAMS" />
+        <activity android:name=".ActivityAboutWMS" />
+        <activity android:name=".ActivityAboutWindow" />
+        <activity android:name=".ActivityAboutPerformance" />
+        <activity android:name=".ActivityAboutMemory" />
+        <activity android:name=".ActivityAboutBinder" />
+        <activity android:name=".ActivityAboutMVX" />
+        <activity android:name=".ActivityAboutBitmap" />
+        <activity android:name=".ActivityAboutAnimator" />
+        <activity
+            android:name=".ActivityAboutWebview"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcitivityAboutRecycleView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAboutViewDistribute"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAboutView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAboutHandler"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAboutContentProvider"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAboutBroadcastReceiver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAboutService"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityAboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

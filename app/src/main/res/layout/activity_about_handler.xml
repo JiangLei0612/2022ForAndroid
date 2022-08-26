@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q1 Handler的实现原理"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="1 Looper
+            \n线程是一段可执行的代码，当可执行代码执行完成后，线程生命周期便会终止，线程就会退出，那么做为App的主线程，如果代码段执行完了会怎样？，那么就会出现App启动后执行一段代码后就自动退出了，这是很不合理的。所以为了防止代码段被执行完，只能在代码中插入一个死循环，那么代码就不会被执行完，然后自动退出，怎么在在代码中插入一个死循环呢？那么Looper出现了，在主线程中调用Looper.prepare()...Looper.loop()就会变当前线程变成Looper线程（可以先简单理解：无限循环不退出的线程），Looper.loop()方法里面有一段死循环的代码，所以主线程会进入while(true){...}的代码段跳不出来，但是主线程也不能什么都不做吧？其实所有做的事情都在while(true){...}里面做了，主线程会在死循环中不断等其他线程给它发消息（消息包括：Activity启动，生命周期，更新UI，控件事件等），一有消息就根据消息做相应的处理，Looper的另外一部分工作就是在循环代码中会不断从消息队列挨个拿出消息给主线程处理。
+            \n2 MessageQueue
+            \nMessageQueue 存在的原因很简单，就是同一线程在同一时间只能处理一个消息，同一线程代码执行是不具有并发性，所以需要队列来保存消息和安排每个消息的处理顺序。多个其他线程往UI线程发送消息，UI线程必须把这些消息保持到一个列表（它同一时间不能处理那么多任务),然后挨个拿出来处理，这种设计很简单，我们平时写代码其实也经常这么做。每一个Looper线程都会维护这样一个队列，而且仅此一个，这个队列的消息只能由该线程处理。
+            \n3 Handler
+            \n简单说Handler用于同一个进程的线程间通信。Looper让主线程无限循环地从自己的MessageQueue拿出消息处理，既然这样我们就知道处理消息肯定是在主线程中处理的，那么怎样在其他的线程往主线程的队列里放入消息呢？其实很简单，我们知道在同一进程中线程和线程之间资源是共享的，也就是对于任何变量在任何线程都是可以访问和修改的，只要考虑并发性做好同步就行了，那么只要拿到MessageQueue 的实例，就可以往主线程的MessageQueue放入消息，主线程在轮询的时候就会在主线程处理这个消息。
+            \nHandler 在sendMessage的时候就通过这个引用往消息队列里插入新消息。Handler 的另外一个作用，就是能统一处理消息的回调。这样一个Handler发出消息又确保消息处理也是自己来做，这样的设计非常的赞。具体做法就是在队列里面的Message持有Handler的引用（哪个handler 把它放到队列里，message就持有了这个handler的引用），然后等到主线程轮询到这个message的时候，就来回调我们经常重写的Handler的handleMessage(Message msg)方法。
+            \n4 Message
+            \nMessage是封装了需要传递的数据交由Handler 处理的对象
+            \n1 用于存放传递的数据；2 是主线程和子线程传递数据的载体
+            \n初始化Message的方式
+            \n1 Message message= new Message()；
+            \n2 Message message= Message.obtain()；
+            \n3 Message message= handler.obtainMessage()"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler01"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler02"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler03"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler04"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler05"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="10dp"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler06"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="10dp"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler07"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="10dp"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q2 子线程中能不能直接new一个Handler,为什么主线程?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="1 可以在子线程直接new一个Handler，不过需要在子线程里先调用Looper.prepare()，new一个Handler后，还需要调用Looper.loop()方法。
+            \n2 ActivityThread.main()是整个android应用的入口，在子线程中调用Looper.prepare()是为了创建一个Looper对象，并将该对象存储在当前线程的ThreadLocal中，每个线程都会有一个ThreadLocal，它为每个线程提供了一个本地的副本变量机制，实现了和其它线程隔离，并且这种变量只在本线程的生命周期内起作用，可以减少同一个线程内多个方法之间的公共变量传递的复杂度。Looper.loop()方法是为了取出消息队列中的消息并将消息发送给指定的handler,通过msg.target.dispatchMassage()方法。"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler08"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler09"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler10"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler11"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q3 Handler内存泄漏原因及解决方案?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="1 Handler造成内存泄漏的原因:
+            \nHandler造成内存泄露的原因。非静态内部类，或者匿名内部类。使得Handler默认持有外部类的引用。在Activity销毁时，由于Handler可能有未执行完正在执行的Message。导致Handler持有Activity的引用。进而导致GC无法回收Activity。
+            \n2 造成内存泄漏的常见方式
+            \n (1) 匿名内部类:
+            \n  new Handler(){
+            \n      @Override
+            \n      public void handleMessage(Message msg) {
+            \n          super.handleMessage(msg);
+            \n      }             \n  };
+            \n (2)非静态内部类:
+            \n  protected class AppHandler extends Handler {
+            \n      @Override
+            \n      public void handleMessage(Message msg) {
+            \n
+            \n      }
+            \n  }
+            "
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="3 解决办法
+            \n (1)Activity销毁时，清空Handler中，未执行或正在执行的Callback以及Message。
+            \n (2)静态内部类+弱引用"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler12"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q4 Message.obtain()怎么维护消息池的?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler13"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q5 MessageQueue是什么数据结构"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="MessageQueue的数据结构是一个单向链表，Message对象有个next字段保存列表中的下一个，MessageQueue中的mMessages保存链表的第一个元素。
+            \n循环体内首先调用nativePollOnce(ptr, nextPollTimeoutMillis)，这是一个native方法，实际作用就是通过Native层的MessageQueue阻塞nextPollTimeoutMillis毫秒的时间。
+            \n1.如果nextPollTimeoutMillis=-1，一直阻塞不会超时
+            \n2.如果nextPollTimeoutMillis=0，不会阻塞，立即返回。
+            \n3.如果nextPollTimeoutMillis>0，最长阻塞nextPollTimeoutMillis毫秒(超时)，如果期间有程序唤醒会立即返回。
+            \nMessageQueue中插入了一个Message，并且未设置target。它的作用是插入一个消息屏障，这个屏障之后的所有同步消息都不会被执行，即使时间已经到了也不会执行。可以通过public void removeSyncBarrier(int token)来移除这个屏障，参数是post方法的返回值。这些方法是隐藏的或者是私有的，具体应用场景可以查看ViewRootImpl中的void scheduleTraversals()方法，它在绘图之前会插入一个消息屏障，绘制之后移除。
+            \n参考文章：https://blog.csdn.net/kisty_yao/article/details/71191175"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler14"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q6 Handler怎么做到的一个线程对应一个Looper，如何保证只有一个MessageQueue?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 通过Handler send Message之后，会把Message对象放入MessageQueue队列中
+            \n2 每个线程拥有自己的Looper对象和MessageQueue对象，他们的唯一性是通过ThreadLocal保证的
+            \n3 通过ThreadLocal.set(new Looper())保证线程中Looper对象是唯一的，而MessageQueue是在Looper构造函数中初始化的，和Looper对象相关联，所以线程中Looper和MessageQueue是唯一的"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q7 ThreadLocal在Handler机制中的作用?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="在Handler机制的时候，我们会接触到Looper中的一个很重要的类：ThreadLocal，ThreadLocal并不是线程，它的作用是可以在每个线程中存储数据。
+            \nHandler在创建的时候就会获取当前线程的Looper来构造消息循环系统，获取的方式就是通过ThreadLocal。ThreadLocal可以在不同的线程中互补干扰的存储并提供数据，Handler就是通过ThreadLocal可以轻松获取每个线程的Looper。当然需要注意的是，线程是默认没有Looper的，如果需要使用Handler就必须为线程创建Looper。
+            \nThreadLocal是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只有指定线程中可以获取到存储的数据，对于其它线程来说无法获取到数据。
+            \n当我们管理数据的时候是以线程为作用域并且不同线程管理不同的数据副本的时候，就可以考虑使用ThreadLocal。ThreadLocal的作用就是提供了一个全局的哈希表，用于实现指定线程的数据控制。"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q7 HandlerThread是什么 &amp; 好处 &amp; 原理 &amp; 使用场景?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 HandlerThread是什么？
+            \n一个便利地启动带有Looper的「新线程」的类, 该Looper可以用来创建Handler类，使用HandlerThread类必须调用start()方法
+            \n2 HandlerThread的作用？
+            \n  (1)在工作线程中执行耗时任务
+            \n  (2)实现异步通信和消息传递
+            \n3 HandlerThread有什么有点？
+            \n  (1)方便使用异步通信
+            \n  (2)不需要使用&quot;任务线程（如继承Thread类）&quot;+Handler类的复杂组合
+            \n  (3)当希望停止时可以执行.quit()或者quitSafely()来结束当前线程运行()
+            \n4 HandlerThread的工作原理:
+            \nHandlerThread本质上是一个线程类，他与普通Thread类型不同之处在于在它执行run方法时，其内部会持有Looper并调用Looper.loop开启循环读取MessageQueue中的消息, 创建Handler时绑定HandlerThread中的Looper对象，这样Handler就和HandlerThread中的Looper对象就关联起来了
+            \n5 HandlerThread的使用步骤
+            \n  (1)创建HandlerThread实例
+            \n  (2)调用HandlerThread实例的start()方法启动线程
+            \n  (3)使用HandlerThread实例的Looper对象创建Handler
+            \n  (4)使用Handler发送消息"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler15"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q7 Android消息机制中的同步屏障机制"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 什么是同步屏障机制？
+            \n同步屏障可以通过MessageQueue.postSyncBarrier函数来设置。该方法发送了一个没有target的Message到Queue中，在next方法中获取消息时，如果发现没有target的Message，则在一定的时间内跳过同步消息，优先执行异步消息。再换句话说，同步屏障为Handler消息机制增加了一种简单的优先级机制，异步消息的优先级要高于同步消息。
+            \n2 同步屏障是通过MessageQueue的postSyncBarrier方法插入到消息队列的。
+            \n3 同步屏障在Android中的应用
+            \nAndroid 系统中的 UI 更新相关的消息即为异步消息，需要优先处理。"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/handler16"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/teal_200"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

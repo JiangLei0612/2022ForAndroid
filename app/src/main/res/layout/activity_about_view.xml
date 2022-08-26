@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q1 View绘制流程"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="具体方法调用流程：
+            \n1 Activity:handleResumeActivity（该方法内使用Context.getWindowManager创建WindowManager对象）
+            \n2 WindowManager:addView（该方法内WindowManager委托代理给一个WindowManagerGlobal对象）
+            \n3 WindowManagerGlobal:addView（该方法内创建了ViewRootImpl对象）
+            \n4 ViewRootImpl:setView→requestLayout→scheduleTraversals→doTraversal→performTraversals（最终到达绘制的入口）
+            \nView绘制的三个流程:
+            \n1 measure测量：测量出整个View树所有View的宽高，给出每个View的“测量宽高”（会先判断是否需要重新计算）
+            \n2 layout布局：确定整个View树所有View的“最终宽高”和四个顶点的位置（会先判断是否需要重新计算）
+            \n3 draw绘制：绘制整个View树的所有View（会先判断是否需要重新绘制）"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/view01"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q2 MeasureSpec是什么"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 MeasureSpec定义
+            \nMeasureSpec 封装了父布局传递给子布局的布局要求，每个 MeasureSpec 由 mode 和 size 组成，包含了父布局对子布局相应的宽高要求。
+            \n2 MeasureSpec的三种模式
+            \n  (1)UNSPECIFIED
+            \n  父布局不对子布局做任何限制，它想多大就多大；一般自定义 View 中用不到
+            \n  (2)EXACTLY
+            \n  父布局对子布局的宽高大小有明确的要求，不管子布局想要多大，它都不能超过父布局对它的限制；
+            \n  (3)AT_MOST
+            \n  子布局想要多大就可以多大，但是一般来说不会超过父布局的尺寸；"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/view02"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q3 Activity中获取某个View的宽高有几种方法?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 onWindowFocusChanged
+            \nonWindowFocusChanged：View已经初始化完毕，宽高已经有了，需要注意onWindowFocusChanged会被调用多次，Activity得到焦点和失去焦点都会执行这个回调
+            \n2 view.post(runnable)
+            \n通过post可以将一个runnable投递到消息队列的尾部，等待Looper调用此runnable的时候，View也已经初始化完成
+            \n3 ViewTreeObserver
+            \n使用ViewTreeObserver的众多回调可以完成这个功能，比如使用OnGlobalLayoutListener这个接口，当View树的状态发生改变或者View树内部的View的可见性发生改变时，OnGlobalLayout方法将会被回调，这是获取View宽高很好的一个时机，需要注意的是，伴随着View树的状态改变，OnGlobalLayout会被调用多次
+            \n4 view.measure(int widthMeasureSpec, int heightMeasureSpec)
+            \n通过手动对View进行measure来得到View的宽高"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q4 onCreate()和onResume()中获取不到View的宽高?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="View 的测绘流程是在 performTraversals() 才开始的；而这个方法的调用是在 onResume() 方法之后，所以在 onCreate() 和 onResume() 方法中拿不到 View 的宽高信息"
+            >
+        </TextView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q5 view.post(runnable)为什么可以测量宽高?"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="Android是基于消息驱动的，当事件被添加到消息队列时，必须按照先后顺序执行，只有当前消息执行完了才会执行下一个事件。在这里或许有人明白了其实performTraversals本身就位于一个事件中。因此当HandlerActionQueue中缓存的Runnable被添加到消息队列时并不会立即执行。只有当前正在执行的事件结束也就是View被measure、layout、draw后，才会执行Runnable对象。"
+            >
+        </TextView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q6 Android绘制和屏幕刷新机制原理"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 相关的基本概念:
+            \n(1)CPU:执行应用层的measure、layout、draw等操作,绘制完成后将数据提交给GPU
+            \n(2)GPU:进一步处理数据,并将数据缓存起来
+            \n(3)屏幕:由一个个像素点组成,以固定的频率(16.6ms,即1秒60帧)从缓冲区中取出数据来填
+            \n2 双缓冲机制：
+            \nAndroid系统引入了双缓冲机制.GPU只向Back Buffer中写入绘制数据,且GPU会定期交换Back Buffer和Frame Buffer，也就是让Back Buffer 变成Frame Buffer交给屏幕进行绘制，让原先的Frame Buffer变成Back Buffer进行数据写入。交换的频率也是60次/秒，这就与屏幕的刷新频率保持了同步"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/view03"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q7 Choreographer的作用"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 Android平台提供两种信号，一种是硬件信号，另一种是软件信号，由SurfaceFlinger进程的一个线程定时发出，硬件信号由硬件发出;
+            \n2 App进程若要通过gpu实现图像绘制，需要在接收到Vsync信号的条件下进行，因此，App进程访问SurfaceFlinger进程获取这个信号，再进行gpu绘制;
+            \n3 Choreographer就是负责获取Vsync同步信号并控制App线程(主线程)完成图像绘制的类;
+            \n总结：
+            \n1 控制外部输入事件处理，动画执行，UI变化，以及提交执行都是在同一个类中做的处理，即是Choreographer;
+            \n2 Choreographer支持4种类型事件：输入、绘制、动画、提交，并通过postCallback在对应需要同步vsync进行刷新处进行注册，等待回调;
+            \n3 每次执行的时候，Choreographer会根据当前的时间，只处理事件链表中最后一个事件，当有耗时操作在主线程时，事件不能及时执行，就会出现所谓的“跳帧”，“卡顿”现象;
+            \n4 Choreographer的共有方法postCallback(callbackType, Object)是往事件链表中放事件的方法，而doFrame()是消耗这些事件的方法;
+            \n5 Choreographer监听底层Vsync信号，一旦接收到回调信号，则通过doFrame统一对java层4种类型事件进行回调。
+            \n参考文章：51cto.com/article/694165.html"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q7 Choreographer的作用"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 什么事SurfaceView?
+            \nSurfaceView是View的子类，且实现了Parcelable接口且实现了Parcelable接口，其中内嵌了一个专门用于绘制的Surface，SurfaceView可以控制这个Surface的格式和尺寸，以及Surface的绘制位置。可以理解为Surface就是管理数据的地方，SurfaceView就是展示数据的地方。在Camera,MediaRecorder,MediaPlayer中用来显示图像的。
+            \n2 为什么要使用SurfaceView?
+            \nAndroid中View是通过刷新来重绘视图，系统通过发出VSSYNC信号来进行屏幕的重绘，刷新的时间间隔是16ms,如果我们可以在16ms以内将绘制工作完成，则没有任何问题，如果我们绘制过程逻辑很复杂，并且我们的界面更新还非常频繁，这时候就会造成界面的卡顿，影响用户体验，为此Android提供了SurfaceView来解决这一问题。
+            \n3 View和SurfaceView的区别:
+            \n(1)View适用于主动更新的情况，而SurfaceView则适用于被动更新的情况，比如频繁刷新界面。
+            \n(2)View在主线程中对页面进行刷新，而SurfaceView则开启一个子线程来对页面进行刷新。
+            \n(3)View在绘图时没有实现双缓冲机制，SurfaceView在底层机制中就实现了双缓冲机制。
+            \n4 如何使用SurfaceView?
+            \n(1)自定义一个类继承自SurfaceView，并且实现两个接口以及接口定义的方法
+            \n(2)初始化SurfaceView对象
+            \n(3)1.通过lockCanvas()方法获得Canvas对象 2.在子线程中使用Canvas对象进行绘制 3.使用unlockCanvasAndPost()方法将画布内容进行提交"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q8 requestLayout()、invalidate()和postInvalidate() 的区别"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 requestLayout()：该方法会递归调用父窗口的requestLayout()方法，直到触发ViewRootImpl的performTraversals()方法，此时mLayoutRequested为true，会触发onMesaure()与onLayout()方法，不一定会触发onDraw()方法。
+            \n2 invalidate()：该方法递归调用父View的invalidateChildInParent()方法，直到调用ViewRootImpl的invalidateChildInParent()方法，最终触发ViewRootImpl的performTraversals()方法，此时mLayoutRequested为false，不会触发onMesaure()与onLayout()方法，当时会触发onDraw()方法。
+            \n3 postInvalidate()：该方法功能和invalidate()一样，只是它可以在非UI线程中调用。
+            \n一般来说需要重新布局就调用requestLayout()方法，需要重新绘制就调用invalidate()方法。"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q8 自定义View的基本流程？"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            android:text="1 继承View
+            \n2 重写构造方法
+            \n3 自定义xml中的属性
+            \n4 onMeasure方法
+            \n5 onLayout方法
+            \n6 onDraw方法"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/view04"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/view05"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/view06"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/view07"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/teal_200"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

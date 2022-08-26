@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 Android中进程和线程的关系,区别？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="(1) 进程：进程是系统进行资源分配的基本单元
+                \n      1.有一段程序供其执行
+                \n      2.拥有专用的系统堆栈空间
+                \n      3.在内存中有对应的进程控制块
+                \n      4.拥有独立的用户存储空间
+                \n      5.进程之间不能进行自由的信息交互
+                \n(2) 线程：是CUP调度的基本单元
+                \n      1.每个进程必须包含一个线程
+                \n      2.进程间的切换开销比较大，线程创建和终止比进程快，进程间无法进行自由的资源交换，同进程内的线程可以自由交换"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 为何需要进行IPC,多进程通信可能会出现什么问题？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="在Android系统
+中一个应用默认只有一个进程，每个进程都有自己独立的资源和内存空间，其它进程不能任意访问当前
+进程的内存和资源。这样导致在不同进程的四大组件没法进行通信，线程间没法做同步，静态变量和单
+例也会失效。所以需要有一套IPC机制来解决进程间通信、数据传输的问题。
+\n
+\n多进程会引发的问题？
+\n  1.静态成员和单例模式失效
+\n  2.线程同步机制失效
+\n  3.SharedPreferences 可靠性降低
+\n  4.Application 被多次创建"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 Android中IPC方式有几种、各种方式优缺点？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text=""
+                >
+            </TextView>
+
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/ipc"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q4 为何新增Binder来作为主要的IPC方式？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 效率：传输效率主要影响因素是内存拷贝的次数，拷贝次数越少，传输速率越高。从Android进程架
+构角度分析：对于消息队列、Socket和管道来说，数据先从发送方的缓存区拷贝到内核开辟的缓存区
+中，再从内核缓存区拷贝到接收方的缓存区，一共两次拷贝。
+一次数据传递需要经历：用户空间 –> 内核缓存区 –> 用户空间，需要2次数据拷贝，这样效率不高。
+而对于Binder来说，数据从发送方的缓存区拷贝到内核的缓存区，而接收方的缓存区与内核的缓存区是
+映射到同一块物理地址的，节省了一次数据拷贝的过程 ： 共享内存不需要拷贝，Binder的性能仅次于共
+享内存。
+\n2 稳定性：共享内存的性能优于Binder，那为什么不采用共享内存呢，因为共享内存需要处
+理并发同步问题，容易出现死锁和资源竞争，稳定性较差。 Binder基于C/S架构 ，Server端与Client端
+相对独立，稳定性较好。
+\n3 安全性：传统Linux IPC的接收方无法获得对方进程可靠的UID/PID，从而无法鉴别对方身份；而
+Binder机制为每个进程分配了UID/PID，且在Binder通信时会根据UID/PID进行有效性检测。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q5 什么是Binder？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1. 从进程间通信的角度看，Binder 是一种进程间通信的机制；
+                \n2. 从 Server 进程的角度看，Binder 指的是 Server 中的 Binder 实体对象(Binder类 IBinder)；
+                \n3. 从 Client 进程的角度看，Binder 指的是对 Binder 代理对象，是 Binder 实体对象的一个远程代理
+                \n4. 从传输过程的角度看，Binder 是一个可以跨进程传输的对象；Binder 驱动会自动完成代理对象和本地
+对象之间的转换。\n5. 从Android Framework角度来说，Binder是ServiceManager连接各种Manager和相应ManagerService
+的桥梁 Binder跨进程通信机制：基于C/S架构，由Client、Server、ServerManager和Binder驱动组
+成。\n
+\n      进程空间分为用户空间和内核空间。用户空间不可以进行数据交互；内核空间可以进行数据交互，所有
+进程共用一个内核空间
+\n      Client、Server、ServiceManager均在用户空间中实现，而Binder驱动程序则是在内核空间中实现的。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q6 Binder的原理？(https://blog.csdn.net/carson_ho/article/details/73560642)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/binder"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="Binder机制 在Android中的具体实现原理？
+                \n 1 注册服务：Server进程 通过Binder驱动 向 Service Manager进程注册服务,注册服务后，Binder驱动持有 Server进程创建的Binder实体
+                \n 2 获取服务：Client进程 使用 某个 service前（此处是 相加函数），须 通过Binder驱动 向 ServiceManager进程 获取相应的Service信息，Client进程与Server进程已经建立了连接
+                \n 3 使用服务：Client进程 根据获取到的 Service信息（Binder代理对象），通过Binder驱动 建立与 该Service所在Server进程通信的链路，并开始使用服务"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q7 Binder框架中ServiceManager的作用？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 根据传入的code:SVC_MGR_ADD_SERVICE得知，本次binder流程想要进行服务注册。
+                \n (1)从binder_io  msg中获取服务名称和长度
+                \n (2)从binder_io msg 中获取handle
+                \n (3)检查该服务是否有注册的selinx权限
+                \n (4)查询服务列表svclist 是否存在该handle，如果有handle，就更新该服务的handle信息，通过这个handle我们最终就能找到远端的service实体
+                \n (5)如果svclist不存在该服务，申请一个svcinfo的空间，把服务名、长度、handle等信息存入其中
+                \n (6)把svcinfo 加入svclist的链表中
+                \n (7)再以BC_ACQUIRE命令，handle为目标的信息，通过ioctl发送给binder驱动
+                \n (8)最后以BC_REQUEST_DEATH_NOTIFICATION命令的信息，通过ioctl发送给binder驱动,主要用于清理内存等收尾工作"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 根据传入的code:SVC_MGR_GET_SERVICE、SVC_MGR_CHECK_SERVICE得知，本次binder流程想要进行服务获取。
+                \n (1)获取服务的名字s和长度len
+                \n (2)从svclist中根据名字查到一个svcinfo的结构
+                \n (3)进行selinx检查
+                \n (4)检查通过，返回该服务的handle
+                \n (5)把handle放入binder_io 的reply的data中
+                \n (6)最后在binder_parse()中调用binder_send_reply(),以BC_REPLY命令， 通过ioctl发送给binder驱动，最终转到client进程
+                \n
+                \n 总结：ServiceManager 注册成为上下文管理者-守护进程，负责管理系统中的所有服务。ServiceManger进程跟所有向其注册服务的死亡通知建立联系, 那么当服务所在进程死亡后, 会只需告知ServiceManager.每个Client通过查询ServiceManager可获取Server进程的情况，降低所有Client进程直接检测会导致负载过重。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q8 什么是AIDL？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="一 概述
+                \n AIDL 意思即 Android Interface Definition Language（Android接口定义语言），是用于定义服务器和客户端通信接口的一种描述语言，可以拿来生成用于IPC的代码。从某种意义上说AIDL其实是一个模板，因为在使用过程中，实际起作用的并不是AIDL文件，而是据此而生成的一个IInterface的实例代码（从中可获得Binder实例），AIDL其实是为了避免我们重复编写代码而出现的一个模板
+                \n二 Android 中AIDL 的作用是什么
+                \n 1.AIDL是一个缩写，全称是Android Interface Definition Language，也就是Android接口定义语言。
+                \n 2.这门语言的目的是为了实现进程间通信，尤其是涉及多线程并发情况下的进程间通信。
+                \n 3.编写AIDL文件，系统就会自动为我们生成代码，大大简化了Android程序员的工作。
+                \n三 它所支持的参数类型是
+                \n 1.Java 编程语言中的所有原语类型（如 int、long、char、boolean 等等）
+                \n 2.String,CharSequence
+                \n 3.List 里面每个元素都必须能够被AIDL支持 List支持泛型 另一端实际接收的具体类始终是 ArrayList，但生成的方法使用的是 List 接口
+                \n 4.Map 里面每个元素都必须能够被AIDL支持，包括key和value；Map是不支持泛型的；另一端实际接收的具体类始终是 HashMap，但生成的方法使用的是 Map 接口
+                \n 5.Parcelabl 所有实现了Parcelable接口的对象
+                \n 6.AIDL：所有的AIDL接口本身也可以在AIDL文件中使用
+                \n四 默认情况下AIDL的调用过程是同步还是异步
+                \n 同步，客户端调用远程服务的方法，被调用的方法运行在服务端的Binder线程池中，同时客户端线程会被挂起，这个时候如果服务端方法执行比较耗时，就会导致客户端线程长时间地阻塞在这里，如果这个客户端线程是UI线程的话，就到导致客户端ANR
+                \n五 如何指定AIDL为异步调用
+                \n 通过接口回调；首先需要提供一个AIDL接口，里面声明用户感兴趣的事件，然后在服务端进行注册，这样当用户感兴趣的事情发生时，服务端就会回调，由于回调接口里声明的方法运行在客户端的线程池，客户端不能在它里面去访问UI相关的内容，如果要访问UI，可以使用handler切换到UI线程。当页面销毁时，要记得解注册，由于是多进程，注册和解注册需要借助">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q9 AIDL使用的步骤？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="一 服务端
+                \n 1.创建服务端的AIDL定义想要的方法
+                \n 2.在服务端写一个Service服务
+                \n 3.在Service里创建一个内部类继承IMyAidlInterface.Stub
+                \n 4.在清单文件中注册Service
+                \n 二 客户端
+                \n 1.让服务端提供（复制）一份服务端的AIDL的接口及包名拷贝到客户端
+                \n 2.在Activity里去绑定（连接）Service，并启动（再声明必须保证包名和AIDL包名一致）
+                \n 3.拿到绑定服务成功后的实例，去做相关的操作">
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="
+                \n
+                \n参考文章：
+                \n 1 https://blog.csdn.net/yiranfeng
+                \n
+                \n"
+                >
+            </TextView>
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

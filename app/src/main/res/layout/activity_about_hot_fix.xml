@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 插件化的定义？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="插件化开发是将整个app拆分成多个模块，这些模块包括一个宿主和多个插件，每个模块都是一个apk，最终打包的时候宿主apk和插件apk分开打包。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 插件化的优势？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 业务模块基本完全解耦
+                \n2 高效的并行开发(编译速度更快)
+                \n3 按需加载，内存占用更低"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 插件化类加载原理？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 主要依赖上述DexClassLoader：
+                \n DexClassLoader中4个参数：
+                \n 1 dexPath:要加载的类所在的jar或者apk文件路径，类装载器将从该路径中寻找指定的目标类,该类必须是APK或jar的全路径
+                \n 2 optimizedDirectory：odex优化之后的dex存放路径，真正的数据是从这个位置的dex文件加载的，由于ClassLoader只能加载内部存储路径中的dex文件，所以这个路径必须为内部路径
+                \n 3 librarySearchPath：目标类中所使用的C/C++库存放的路径
+                \n 4 classloader：本装载器的父装载器，一般使用当前执行类的装载器就可以了，在Android用context.getClassLoader()就可以了
+                \n
+                \n 双亲委托机制：
+                \n 1 首先通过findLoadedClass检查是否已经加载过了；
+                \n 2 如果没有加载过，检查是否存在parent（注意这个parent父母即双亲，并不是指父类，而是上一级），如果双亲存在则调用parent的loadClass（）方法,依次递归调用，当到达顶部的时候不再检查双亲而是调用findClass方法并低层返回结果；
+                \n 3 如果最终都没有查找到或加载成功则调用自身的findClass并返回结果。
+                \n
+                \n 为什么使用双亲委托机制？
+                \n 1 避免重复加载，当双亲加载器已经加载了该类的时候，就没有必要子ClassLoader再次加载；
+                \n 2 安全性考虑，防止核心API库被随意篡改。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/classloader"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q4 加载插件资源文件？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="AssetManager的addAssetPath()方法添加系统资源和apk资源，并构造Resource提供给Context上下文进行使用，所以真正加载资源是通过AssetManger去加载。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q5 加载插件中Activity？(https://www.jianshu.com/p/2da466493f69)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 代理模式（DL框架）ProxyActivity + 插件中没注册的Activity = 标准的Activity
+                \n1 宿主中通过启动ProxyActivity
+                \n2 代理activity通过AIDL通信和插件PluginActivity建立联系
+                \n3 当宿主中的代理ProxyActivity生命周期发生变化的时候，通过AIDL通知到PluginActivity。从而完成插件Activity生命周期的同步。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/proxy_activity"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 坑位占用模式：在AndroidManifest中注册，但并没有真实的实现 类，只作为其他Activity启动的坑位，通过HOOK AMS去加载插件中的Activity的class文件。"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/replugin_activity"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q6 加载插件中Activity？(https://www.jianshu.com/p/2da466493f69)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 插件化的内容在原 App 中没有，⽽热更新是原 App 中的内容做了改动
+                \n2 插件化在代码中有固定的⼊⼝，⽽热更新则可能改变任何⼀个位置的代码
+                \n
+                \n 热修复的原理：
+                \n 将更改后的class文件，⽤ d8 把指定的需要修复的class成dex文件作为补丁包，将它插到dexElements数组的最前面；这样，系统会先加载前面的第一个1.class文件，等到后面加载到有Bug的1.class的时候，会发现前面已经加载过一次1.class了，所以就不会加载这次有Bug的1.class了，这就完成了热修复。"
+                >
+            </TextView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/teal_200"
+            >
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Activity"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Service"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_broadcastReceiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About BroadcastReceiver"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_contentProvider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About ContentProvider"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_handler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Handler"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_view_draw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About View绘制"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_view_distribution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About View事件分发"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About RecycleView"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Viewpager Fragment"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_webview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Webview"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_animator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Animator"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_bitmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Bitmap"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_mvx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About MVC MVP MVVM"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_binder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Binder"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_memory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Memory"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_performance_optimization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About 性能优化"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_window"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Window"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_wms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About WindowManagerService"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_ams"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About ActivityManagerService"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About 系统启动"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_apk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About App启动 打包 安装"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_serializable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About 序列化"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_structure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About 模块化 组件化"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_fix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About 热修复 插件化"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_aop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About AOP"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_jectpack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Jectpack"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_okhttp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About OkHttp"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_glide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Glide"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_lru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About LruCache"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_retrofit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Retrofit"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_leakcanary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About LeakCanary"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_eventbus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About EventBus"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_rxjava"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Rxjava"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_thread"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About 线程安全"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_kotlin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Kotlin"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_algorithm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Algorithm"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_design"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About 设计模式"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_about_daggar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="About Daggar2"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:paddingLeft="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#0fffff"
+                >
+
+            </View>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

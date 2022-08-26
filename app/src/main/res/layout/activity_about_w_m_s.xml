@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 什么是WindowManagerService？(https://www.jianshu.com/p/9e244d13b866?tdsourcetag=s_pcqq_aiomsg)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 WindowManagerService 的诞生：WMS 是在 SystemServer 进程中启动的，SystemServer 进程是 Android 系统启动的时候初始化的， SystemServer 的入口函数 main()"
+                >
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 调用SystemServer.main()"
+                >
+            </TextView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/wms01"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="2 调用SystemServer.run(),然后在startOtherServices中初始化WMS"
+                >
+            </TextView>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/wms02"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 WMS 中的几个重要概念"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 Session：ViewRootImpl 和 WMS 之间的通信就是通过 Session 对象完成的。Session 类继承自 IWindowSession.Stub，每一个应用进程都有一个唯一的 Session 对象与 WMS 通信
+                \n
+                \n2 WindowState:WindowState 是 WMS 中一个重要的概念，在 WMS 中的一个 WindowState 对象就对应着一个应用进程中的 Window 对象。
+                \n
+                \n3 WindowToken:
+                \n(1)在 WMS 中，一个 WindowToken 就代表着一个应用组件，应用组件包括：Activity、InputMethod 等。在 WMS 中，会将属于同一 WindowToken 的做统一处理，比如在对窗口进行 ZOrder 排序时，会将属于统一 WindowToken 的排在一起。
+                \n(2)WindowToken 也具有令牌的作用。应用组件在创建 Window 时都需要提供一个有效的 WindowToken 以表明自己的身份，并且窗口的类型必须与所持有的 WindowToken 类型保持一致。如果是系统类型的窗口，可以不用提供 WindowToken，WMS 会自动为该系统窗口隐式的创建 WindowToken，但是要求应用必须具有创建该系统类型窗口的权限
+                \n
+                \n4 DisplayContent"
+
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 Android窗口大概分为几种？分组原理是什么"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 应用程序窗口:应用程序窗口一般位于最底层，Z-Order在1-99(Activity、Dialog)
+                \n2 子窗口:子窗口一般是显示在应用窗口之上，Z-Order在1000-1999(PopupWindow)
+                \n3 系统级窗口:系统级窗口一般位于最顶层，不会被其他的window遮住，如Toast，Z-Order在2000-2999。如果要弹出自定义系统级窗口需要动态申请权限。(Toast、输入法)
+                \n分组原理：Android窗口是以token来进行分组的，同一组窗口握着相同的token，什么是token呢？在 Android WMS管理框架中，token一个IBinder对象，IBinder在实体端与代理端会相互转换，这里只看实体端，它的取值只有两种:ViewRootImpl中ViewRootImpl.W，或者是ActivityRecord中的IApplicationToken.Stub对象，其中ViewRootImpl.W的实体对象在ViewRootImpl中实例化，而IApplicationToken.Stub在ActivityManagerService端实例化，之后被AMS添加到WMS服务中去，作为Activity应用窗口的键值标识。"
+
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q4 Dialog的Context只能是Activity的Context，不能是Application的Context?"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="Dialog跟Activity对应的窗口一样，有一个phonewindow实例，Dialog的类型是TYPE_APPLICATION，属于应用窗口类型。Dialog最终也是通过系统的WindowManager把自己的Window添加到WMS上，在addView前，Dialog的token是null，Dialog初始化时是通过Context.getSystemServer来获取WindowManager，而如果用Application或者Service的Context去获取这个WindowManager服务的话，会得到一个WindowManagerImpl的实例，这个实例里token也是空的，之后在Dialog的show方法中将Dialog的View添加到WindowManager时会给token设置默认值还是null。如果这个Context是Activity，则直接返回Activity的mWindowManager，这个mWindowManager在Activity的attach方法被创建，token指向此Activity的token。系统对TYPE_APPLICATION类型的窗口，要求必须是Activity的token，不是的话系统会抛出badtokenexception异常，Dialog是应用窗口类型，token必须是Activity的token。
+                \nAndroid不允许Activity或Dialog凭空出项，一个Activity的启动必须要建立在另一个Activity的基础上，也就是以此形成的返回栈，而Dialog必须在一个Activity上面弹出（除非是System Alert类型的Dialog），因此在这种场景下，只能使用Activity类型的Context，否则会出错。"
+
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q5 Surface"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="Surface:Surface中的Canvas成员，是专门用于供程序员画图的场所，就像黑板一样；其中的原始缓冲区是用来保存数据的地方；Surface本身的作用类似一个句柄，得到了这个句柄就可以得到其中的Canvas、原始缓冲区以及其它方面的内容。
+                \n Surface是用来管理数据的
+                \nSurfaceView:SurfaceView就是展示Surface中数据的地方，同时可以认为SurfaceView是用来控制Surface中View的位置和尺寸的。"
+
+                >
+            </TextView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 性能优化"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="一 启动优化
+                \n 1.需要实例化的sdk分成四部分：优先加载、延迟加载、异步加载、懒加载
+                \n (1)优先加载：启动页要展示的开屏广告、网络库和图片加载库等重要的sdk
+                \n (2)异步加载：启动页用不到，使用率较高且初始化费时的sdk
+                \n (3)延迟加载：一般在启动页或者主页中，在用户感知不到的情况下加载
+                \n (4)懒加载：使用率较低的sdk，不操作不加载"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 内存优化(https://zhuanlan.zhihu.com/p/436597784)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="一 Android 内存管理机制
+                \n 应用程序的内存分配和垃圾回收都是由Android虚拟机完成的，在Android 5.0以下，使用的是Dalvik虚拟机，5.0及以上，则使用的是ART虚拟机。
+                \n 1 Java对象的生命周期
+                \n Created（创建）InUse（应用）Invisible（不可见）Unreachable（不可达）Collected（收集）Finalized（终结）Deallocated（对象空间重新分配）
+                \n
+                \n 2 Java 内存分配模型
+                \n 1.方法区：存储类信息、常量、静态变量等。=> 所有线程共享
+                \n 2.虚拟机栈：存储局部变量表、操作数栈等。
+                \n 3.本地方法栈：不同与虚拟机栈为 Java 方法服务、它是为 Native 方法服务的。
+                \n 4.堆：内存最大的区域，每一个对象实际分配内存都是在堆上进行分配的，，而在虚拟机栈中分配的只是引用，这些引用会指向堆中真正存储的对象。
+                \n 5.程序计数器：存储当前线程执行目标方法执行到了第几行。
+                \n
+                \n 3 Android 内存分配模型
+                \n Dalvik虚拟机内存分配：Linear Alloc、 Zygote Space、 Alloc Space
+                \n ART虚拟机的内存分配：Non Moving Space、Zygote Space、Alloc Space、Image Space、Large Obj Space
+                \n
+                \n 4 Java内存回收算法
+                \n 1 标记-清除算法
+                \n 实现原理：标记出所有需要回收的对象。统一回收所有被标记的对象。
+                \n 特点：标记和清除效率不高。产生大量不连续的内存碎片。
+                \n 2 复制算法
+                \n 实现原理：将内存划分为大小相等的两块。一块内存用完之后复制存活对象至另一块。清理另一块内存。
+                \n 特点：实现简单，运行高效。浪费一半空间，代价大。
+                \n 3 标记-整理算法
+                \n 实现原理：标记过程与 ”标记-清除“ 算法一样。存活对象往一端进行移动。清理其余内存。
+                \n 特点：避免 ”标记-清除” 算法导致的内存碎片。避免复制算法的空间浪费。
+                \n 4 分代收集算法（大多数虚拟机厂商所选用的算法）"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="4 Android 内存回收机制
+                \n 在Android的高级系统版本中，针对Heap空间有一个Generational Heap Memory的模型，其中将整个内存分为三个区域：Young Generation（年轻代）、Old Generation（年老代）、Permanent Generation（持久代）
+                \n Young Generation:由一个Eden区和两个Survivor区组成，程序中生成的大部分新的对象都在Eden区中，当Eden区满时，还存活的对象将被复制到其中一个Survivor区，当此Survivor区满时，此区存活的对象又被复制到另一个Survivor区，当这个Survivor区也满时，会将其中存活的对象复制到年老代。
+                \n Old Generation:一般情况下，年老代中的对象生命周期都比较长。
+                \n Permanent Generation:用于存放静态的类和方法，持久代对垃圾回收没有显著影响。
+                \n 5 Dalvik和ART的区别
+                \n 1 Dalvik 仅固定一种回收算法
+                \n 2 ART 回收算法可运行期选择
+                \n 3 ART 具备内存整理能力，减少内存空洞"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="二 优化内存空间
+                \n 1 优化引用方式
+                \n 1 强引用:一个对象具有强引用，GC就绝对不会回收它。当内存空间不足时，JVM会抛出OOM错误。
+                \n 2 软引用:一个对象只具有软引用，则内存空间足够，GC时就不会回收它；如果内存不足，就会回收这些对象的内存。可用来实现内存敏感的高速缓存。
+                \n 3 弱引用:在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间是否足够，都会回收它的内存。
+                \n 4 虚引用:只能用于跟踪即将对被引用对象进行的收集。虚拟机必须与ReferenceQueue类联合使用。因为它能够充当通知机制。
+                \n
+                \n 2 减少不必要的内存开销
+                \n 1 资源复用：通用的字符串、颜色定义、简单页面布局的复用
+                \n 2 视图复用：可以使用ViewHolder实现ConvertView复用
+                \n 3 对象池：显示创建对象池，实现复用逻辑，对相同的类型数据使用同一块内存空间
+                \n 4 Bitmap对象的复用：使用inBitmap属性可以告知Bitmap解码器尝试使用已经存在的内存区域，新解码的bitmap会尝试使用之前那张bitmap在heap中占据的pixel data内存区域。
+                \n
+                \n 3 使用最优的数据类型
+                \n
+                \n 4 图片内存优化
+                \n
+                \n 5 图片放置优化
+                \n
+                \n 6 在App可用内存过低时主动释放内存
+                \n 在App退到后台内存紧张即将被Kill掉时选择重写 onTrimMemory/onLowMemory 方法去释放掉图片缓存、静态缓存来自保
+                \n
+                \n 7 自定义View中的内存优化
+                \n 在onDraw方法里面不要执行对象的创建，一般来说，都应该在自定义View的构造器中创建对象。
+                \n
+                \n 8 Item被回收不可见时释放掉对图片的引用
+                \n 1 ListView：因此每次item被回收后再次利用都会重新绑定数据，只需在ImageView onDetachFromWindow的时候释放掉图片引用即可。
+                \n 2 RecyclerView：因为被回收不可见时第一选择是放进mCacheView中，这里item被复用并不会只需bindViewHolder来重新绑定数据，只有被回收进mRecyclePool中后拿出来复用才会重新绑定数据，因此重写Recycler.Adapter中的onViewRecycled()方法来使item被回收进RecyclePool的时候去释放图片引用。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 布局加载和绘制优化(https://zhuanlan.zhihu.com/p/455886476)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="1 减少UI布局层级，合理使用RelativeLayout和LinearLayout，合理使用Merge，使用 ConstraintLayout，使用ViewStub提高显示速度，布局复用，背景优化
+                \n2 避免过渡绘制
+                \n3 硬件加速绘制
+                \n4 优化刷新频率:合理加载数据、控制界面刷新区域"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q4 卡顿优化(https://zhuanlan.zhihu.com/p/455886476)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:text="常见卡顿来源
+                \n1 可滚动列表:ListView 和 RecyclerView （尤其是后者）常用于最易出现卡顿的复杂滚动列表。它们都包含 Systrace 标记，因此可以使用 Systrace 来判断它们是不是导致应用出现卡顿的因素。
+                \n
+                \n2 布局性能:如果 Systrace 表明 Choreographer#doFrame 的布局部分执行的工作过多或者执行工作的频率太高，则意味着遇到了布局性能问题。应用的布局性能取决于视图层次结构的哪个部分包含会发生改变的布局参数或输入。
+                \n
+                \n3 呈现性能:Android 界面工作分为两个阶段：界面线程上的 Record View#draw 和 RenderThread 上的 DrawFrame。第一阶段对每个失效的 View 运行draw(Canvas)，并可调用自定义视图或代码。第二阶段在原生 RenderThread 上运行，但将根据 Record View#draw 阶段生成的工作运行。
+                \n
+                \n4 线程调度延迟:线程调度程序在 Android 操作系统中负责确定系统中的哪些线程应该运行、何时运行以及运行多长时间。有时，出现卡顿是因为应用的界面线程处于阻塞或未运行状态。Systrace 使用不同的颜色(见下图)来指明线程何时处于休眠状态（灰色）、可运行（蓝色：可以运行，但调度程序尚未选择让它运行）、正在运行（绿色）或处于不可中断休眠状态（红色或橙色）。这对于调试由线程调度延迟引起的卡顿问题非常有用。
+                \n
+                \n5 对象分配和垃圾收集:自从 ART 在 Android 5.0 中作为默认运行时引入后，对象分配和垃圾回收 (GC) 问题已显著缓解，但这项额外的工作仍有可能加重线程的负担。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q5 网络优化(https://zhuanlan.zhihu.com/p/471668052)"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/android_network"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

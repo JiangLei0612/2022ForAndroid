@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q1 service 的生命周期，两种启动方式的区别"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="Service的两种启动方式:
+            \n1 startService()
+            \n启动完之后该service就在后台运行，其生命周期跟启动它的Context没有任何关系。也不能跟Context通讯。
+            \n2 bindService()
+            \n启动之后生命周期跟启动它的Context有关，比如Activity、fragment、service等。在Context中解绑之后，如果改Service没有任何绑定后该Service也就结束。
+            \n生命周期:
+            \nstartService的生命周期： onCreate() -> onStartCommand() -> onDestroy()
+            \nbindService的生命周期: onCreate() -> onBind() -> onUnbind() -> onDestroy()
+
+"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q2 如何保证Service不被杀死"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="@string/service_question_2"
+            >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/iv_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/service01"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q3 Service与Activity怎么实现通信"
+            android:paddingLeft="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="1 通过Binder实现通
+            \nActivity调用bindService(Intent service, ServiceConnection conn, int flags)方法，绑定一个继承Service的引用对象MsgService。通过实例化ServiceConnection接口内部类监听的方法获取MsgService中的Binder对象。如果想实现主动通知Activity的，还可以在MsgService中添加回调方法。
+            \n2 通过Broadcast实现通信
+            \nActivity调用registerReceive(BroadcastReceiver recevier, IntentFilter filter)注册广播接收器，通过startService(Service service)启动一个集成Service的应用对象MsgService，之后MsgService可通过sendBoadcast(Intent intent)更新Actvity内容信息。"
+            >
+        </TextView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/service02"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/service03"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q4 IntentService是什么,IntentService原理，应用场景及其与Service的区别"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="1 Service
+            \nService 是长期运行在后台的应用程序组件。Service 不是一个单独的进程，它和应用程序在同一个进程中，Service 也不是一个线程,它和线程没有任何关系，所以它不能直接处理耗时操作。如果直接把耗时操作放在 Service 的 onStartCommand() 中，很容易引起 ANR .如果有耗时操作就必须开启一个单独的线程来处理
+            \n2 IntentService
+            \nIntentService 是继承于 Service 并处理异步请求的一个类，在 IntentService 内有一个工作线程来处理耗时操作，启动 IntentService 的方式和启动传统 Service 一样，同时，当任务执行完后，IntentService 会自动停止，而不需要我们去手动控制。另外，可以启动 IntentService 多次，而每一个耗时操作会以工作队列的方式在IntentService 的 onHandleIntent 回调方法中执行，并且，每次只会执行一个工作线程，执行完第一个再执行第二个，以此类推。
+            \n用IntentService 有什么好处呢？
+            \n首先，我们省去了在 Service 中手动开线程的麻烦，第二，当操作完成时，我们不用手动停止 Service"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/service04"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:text="IntentService本质是采用Handler和HandlerThread方式:
+            \n1 通过HandlerThread单独开启一个名为IntentService的线程
+            \n2 创建一个名叫ServiceHandler的内部Handler
+            \n3 把内部Handler与HandlerThread所对应的子线程进行绑定
+            \n4 通过onStartCommand()传递给服务intent，依次插入到工作队列中，并逐个发送给onHandleIntent()
+            \n5 通过onHandleIntent()来依次处理所有Intent请求对象所对应的任务"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:background="@color/teal_200"
+            android:textColor="@color/white"
+            android:text="Q5 常用的系统Service "
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            >
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/service05"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/service06"
+            android:adjustViewBounds="true"
+            >
+
+        </ImageView>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

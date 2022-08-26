@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 OkHttp中的重要变量"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 Dispatcher:保存同步和异步Call的地方，并负责执行异步AsyncCall。
+                \n readyAsyncCalls:待执行异步任务队列
+                \n runningAsyncCalls:运行中异步任务队列
+                \n runningSyncCalls:运行中同步任务队列
+                \n executorService:任务队列线程池
+                \n2 RealCall
+                \n3 RealConnectionPool"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_001"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/okhttp001"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 OkHttp中的拦截器"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 RetryAndFollowUpInterceptor:用来实现连接失败的重试和重定向。
+                \n2 BridgeInterceptor:用来修改请求和响应的 header 信息。
+                \n3 CacheInterceptor:用来实现响应缓存。比如获取到的 Response 带有 Date，Expires，Last-Modified，Etag 等 header，表示该 Response 可以缓存一定的时间，下次请求就可以不需要发往服务端，直接拿缓存的。
+                \n4 ConnectInterceptor:用来打开到服务端的连接。其实是调用了 StreamAllocation 的newStream 方法来打开连接的。建联的 TCP 握手，TLS 握手都发生该阶段。过了这个阶段，和服务端的 socket 连接打通。
+                \n5 CallServerInterceptor:用来发起请求并且得到响应。上一个阶段已经握手成功，HttpStream 流已经打开，所以这个阶段把 Request 的请求信息传入流中，并且从流中读取数据封装成 Response 返回。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_002"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/okhttp002"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
