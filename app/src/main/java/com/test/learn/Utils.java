@@ -13,6 +13,8 @@ import java.io.InputStream;
 public class Utils {
 
 
+    //工具类
+
     public static int getScreenWidth(Activity activity){
         int screenWidth = activity.getWindowManager().getDefaultDisplay().getWidth();
         int screenHeight = activity.getWindowManager().getDefaultDisplay().getHeight();
