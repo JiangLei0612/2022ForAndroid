@@ -1,13 +1,9 @@
 package com.test.learn;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import java.io.LineNumberReader;
 
 public class MainActivity extends BaseActivity {
 
@@ -48,6 +44,7 @@ public class MainActivity extends BaseActivity {
     private LinearLayout llAboutAlgorithm;//算法相关
     private LinearLayout llAboutDesign;
     private LinearLayout llAboutDaggar2;
+    private LinearLayout llAboutFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +111,15 @@ public class MainActivity extends BaseActivity {
         llAboutViewRecycleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,AcitivityAboutRecycleView.class);
+                Intent intent = new Intent(MainActivity.this, ActivityAboutRecycleView.class);
+                startActivity(intent);
+            }
+        });
+        llAboutFragment = findViewById(R.id.ll_about_fragment);
+        llAboutFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ActivityAboutFragment.class);
                 startActivity(intent);
             }
         });

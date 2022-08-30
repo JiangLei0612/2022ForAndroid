@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/xiugo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Learn">
-        <activity android:name=".KotlinActivity"></activity>
+        <activity android:name=".ActivityAboutFragment"></activity>
+        <activity android:name=".KotlinActivity" />
         <activity android:name=".ScaleImageActivity" />
         <activity android:name=".ActivityAboutDaggar2" />
         <activity android:name=".ActivityAboutDesignModel" />
@@ -43,7 +44,7 @@
             android:name=".ActivityAboutWebview"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AcitivityAboutRecycleView"
+            android:name=".ActivityAboutRecycleView"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityAboutViewDistribute"
