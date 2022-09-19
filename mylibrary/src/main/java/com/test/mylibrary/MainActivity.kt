@@ -5,10 +5,15 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
-    val age : String = "10";
+    private val age : String = "10";
     var tvTest : TextView? = null
 
 
@@ -29,6 +34,14 @@ class MainActivity : AppCompatActivity() {
         Log.e("",toInt.toString())
         var desc = Person("1111", 1).getDesc()
         desc.length
+
+        var t = thread (start = false){
+
+        }
+
+        GlobalScope.launch (start = CoroutineStart.DEFAULT){
+            delay(1000)
+        }
     }
 
     fun test():Unit{

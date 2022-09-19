@@ -1,11 +1,465 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ActivityAboutBroadcastReceiver"
     android:background="@color/white"
     >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 广播的分类和使用场景？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="广播的分类
+                \n1. 普通广播:
+                \n2. 系统广播:系统发送的广播，只需要注册广播接收器，并定义好action等待接收广播
+                \n3. 有序广播:
+                \n4. 本地广播:由于广播可以跨进程的特性，导致应用可能不断收到来自其他应用的广播，或者别的应用接收到当前应用的私密广播；解决方法为使用应用内广播；
+                \n使用场景:
+                \n同一 App 内部的不同组件之间的消息通信（单个进程）；
+                \n不同 App 之间的组件之间消息通信；
+                \nAndroid系统在特定情况下与App之间的消息通信，如：网络变化、电池电量、屏幕开关等"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 广播的两种注册方式的区别？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 广播的静态注册:
+                \n ① 定义一个广播接收器继承BroadcastReceiver ② 在AndroidManifest.xml声明，添加intent-filter ③ 发送广播
+                \n2 广播的动态注册
+                \n ① 定义一个广播接收器继承BroadcastReceiver ② 在AndroidManifest.xml声明，不添加intent-filter  ③ 注册广播 ④ 解除广播注册"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 广播发送和接收的原理？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 动态注册原理
+                \n应用组件向 AMS 注册 IIntentReceiver 和 IntentFilter ，当 AMS 派发其它组件请求派发的 Intent 时，通过其注册的 IntentFilter 来判断是否与派发的 Intent 匹配，如果匹配，AMS 调用 IIntentReceiver 通知组件处理收到 Intent 后的操作。
+                \n每个 BroadcastReceiver 都会有其对应的 IIntentReceiver ，它由其 Context 构建。IIntentReceiver 被发送给 AMS 后与其进程信息 ProcessRecord 被封装在 ReceiverList 中，在发现匹配到的 Intent 时用来寻找 IIntentReceiver 对应进程。而 ReceiverList 被放在由 IntentFilter 构建的 BroadcastFilter 中，最后 BroadcastFilter 被缓存在 AMS 的 IntentResolver 中。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_001"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast01"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv_002"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast02"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="AMS 在分发一个 Intent 时，用 IntentResolver 中缓存的 BroadcastFilter 的 IntentFilter 和 Intent 相匹配，取出匹配成功的 BroadcastFilter 列表。再取出每个 BroadcastFilter 中的 ReceiverList ，获取其 IIntentReceiver 和进程信息，把 Intent 通过进程的 IApplicationThread 发送给对应的 IIntentReceiver ，再发送给 IIntentReceiver 对应的 BroadcastReceiver 处理"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_003"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast03"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv_004"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast04"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 静态注册广播接收者
+                \n静态注册广播接收者，那在 AndroidManifest.xml 中声明 receiver，并使用匹配器 IntentFilter 配置它要匹配的数据。
+                \n开机后，PMS 会去读取每个 pkg 的信息，并把每个 pkg 里的每个组件信息存储到 ComponentResolver 中，receiver 组件的信息存储在 ComponentResolver#mReceivers 中。mReceivers 是一个 IntentResolver(F, ResolveInfo)，其方法 newResult() 负责将 F 转换成 ResolveInfo。其中 F 为从 pkg 中读取的 receiver 和 IntentFilter 的 Pair。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_005"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast05"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv_006"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast06"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="AMS 在分发一个 Intent 时，会根据 Intent 封装的数据格式去 PMS ComponentResolver 的 mReceivers 中取出对应的 Map 来查找，取出对应 Map 中的 [ParsedActivity, IntentFilter] 对，判断 IntentFilter 是否和 Intent 匹配，如果匹配，通过 IntentFilter#newResult 方法将 [ParsedActivity, IntentFilter] 转换成 ResolveInfo 返回给 AMS。AMS 根据 ResolveInfo 中的 ActivityInfo 找到接收者进程，把 Intent 发送给接收者进程后，再实例化一个和 ActivityInfo 对应的 BroadcastReceiver 实例。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_007"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast07"
+                android:adjustViewBounds="true"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv_008"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast08"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="分发广播
+                \n根据 AMS 分发广播的方式，可以分为串行分发和并行分发。
+                \n
+                \n当 Intent 设置为有序分发（ordered）时，它会被串行分发。当接收者为静态注册时，发送给它们的 Intent 会被串行分发。仅 Intent 没有设置为有序分发，且接收者为动态注册，才会被并行分发。
+                \n
+                \n并行分发不关注分发结果，一次性全部分发给所有接收者，并在串行分发前分发。串行分发需要等上一个接收者处理完成后才会分发给下一个接收者。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_009"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast09"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="分发广播
+                \n根据 AMS 分发广播的方式，可以分为串行分发和并行分发。
+                \n
+                \n当 Intent 设置为有序分发（ordered）时，它会被串行分发。当接收者为静态注册时，发送给它们的 Intent 会被串行分发。仅 Intent 没有设置为有序分发，且接收者为动态注册，才会被并行分发。
+                \n
+                \n并行分发不关注分发结果，一次性全部分发给所有接收者，并在串行分发前分发。串行分发需要等上一个接收者处理完成后才会分发给下一个接收者。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_010"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast10"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="并行广播分发：
+                \nAMS 为 Intent 和所有并行接收者创建广播 BroadcastRecord，再根据 Intent 设置的属性判断它是由前台还是后台或是耗时 BroadcastQueue 分发。BroadcastRecord 会被插到对应 BroadcastQueue 并行广播列表的末尾，等待派发。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_011"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast11"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv_012"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast12"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv_013"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast13"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="串行广播分发：
+                \n如果 Intent 被要求有序派发，AMS 将它的所有接收者和 Intent 封装成 BroadcastRecord ，找到要派发它的 BroadcastQueue ，然后把 BroadcastRecord 插入到对应 BroadcastQueue 的 BroadcastDispatcher 的有序广播队列中等待派发。如果是非有序派发的 Intent，AMS 将其所有静态注册的接收者和 Intent 封装成 BroadcastRecord。
+                \nBroadcastDispatcher 负责为 BroadcastQueue 串行派发广播。它加入了一个延迟策略，来特别关注耗时的接收者，以减少这些耗时者对性能效率的影响。延迟策略下一小节将单独描述。"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_014"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast14"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+
+            <ImageView
+                android:id="@+id/iv_015"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/broadcast15"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                >
+
+            </ImageView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
