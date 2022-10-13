@@ -899,7 +899,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="About EventBus"
+                android:text="About EventBus(待)"
                 android:gravity="center_vertical"
                 android:textSize="25sp"
                 android:paddingLeft="15sp"
@@ -927,7 +927,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="About Rxjava"
+                android:text="About Rxjava(待)"
                 android:gravity="center_vertical"
                 android:textSize="25sp"
                 android:paddingLeft="15sp"
@@ -983,7 +983,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="About Kotlin"
+                android:text="About Kotlin(待)"
                 android:gravity="center_vertical"
                 android:textSize="25sp"
                 android:paddingLeft="15sp"
@@ -1039,7 +1039,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="About 设计模式"
+                android:text="About 设计模式(待)"
                 android:gravity="center_vertical"
                 android:textSize="25sp"
                 android:paddingLeft="15sp"
@@ -1067,7 +1067,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="About Daggar2"
+                android:text="About Daggar2(待)"
                 android:gravity="center_vertical"
                 android:textSize="25sp"
                 android:paddingLeft="15sp"

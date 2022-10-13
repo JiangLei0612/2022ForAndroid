@@ -1,11 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityAboutContentProvider"
-    android:background="@mipmap/sun_flower"
+    android:orientation="vertical"
     >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="返回"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="测试"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q1 ContentProvider(数据提供者)的定义？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 ContentProvider(数据提供者)是应用程序之间共享数据的一种接口机制，是一种更为高级的数据共享方法。
+                \n2 ContentProvider可以指定需要共享的数据，而其他应用程序则可以在不知道数据来源、路径的情况下，对共享数据进行增删改查等操作。
+                \n3 在Android系统中，许多Android系统内置的数据也是通过ContentProvider提供给用户使用，例如通讯录、音视频文件和图像文件等。"
+                >
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q2 什么事Uri？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 Uri(通用资源标识符 Universal Resource Identifer)，代表数据操作的地址，每一个ContentProvider都会有唯一的地址。
+                \n2 ContentProvider使用的Uri语法结构:content://authority/data_path/id
+                \n  ①content:// 是通用前缀，表示该Uri用于ContentProvider定位资源。
+                \n  ②authority 是授权者名称，用来确定具体由哪一个ContentProvider提供资源。因此一般authority都由类的小写全称组成，以保证唯一性。
+                \n  ③data_path 是数据路径，用来确定请求的是哪个数据集。
+                \n  ④id 是数据编号，用来请求单条数据。如果是多条这个字段忽略。"
+                >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:background="@color/teal_200"
+                android:textColor="@color/white"
+                android:text="Q3 什么是ContentResolver？"
+                android:paddingLeft="15dp"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:text="1 ContentResolver是数据调用者，ContentProvider将数据发布出来，通过ContentResolver对象结合Uri进行调用。
+                \n2 一般来说ContentProvider是单例模式，多个应用可通过ContentResolver调用ContentProvider的增删改查操作数据，ContentResolver调用的数据操作会让同一个ContentProvider处理。"
+                >
+            </TextView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
